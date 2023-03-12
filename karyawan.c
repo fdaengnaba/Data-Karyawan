@@ -31,9 +31,12 @@ void pushKaryawan(linkedList *listKaryawan){
         printf("%s\n", "memory allocation error");
         return;
     }
+
     unsigned int id;
     printf("%s", "ID: ");
     scanf("%d", &id);
+    getchar();
+
     if(!isIdValid(id)){
         printf("%s\n", "invalid ID");
         return;
@@ -68,20 +71,39 @@ void pushKaryawan(linkedList *listKaryawan){
         listKaryawan->head = newNode;
     }
 }
-    
+
+void displayList(linkedList *listKaryawan){
+    if (listKaryawan->head == NULL){
+        printf("%s\n", "No Data");
+    } else {
+        node *curr = listKaryawan->head;
+        while (curr != NULL){
+            printf("ID : %5.d\n", curr->id);
+            printf("Nama lengkap : %s\n", curr->name);
+            printf("Tempat lahir : %s\n", curr->birthplace);
+            printf("Jabatan : %s\n", curr->position);
+            curr = curr->next;
+        }
+    }
+}
 
 
 int main(){
     int menu;
+    linkedList listKaryawan;
     while (1){
         system("clear");
         printf("%s\n", "1. Push Data");
+        printf("%s\n", "1. Display daftar karyawan");
+
         scanf("%d", &menu);
 
         switch(menu){
             case 1 :
-                printf("menu 1\n");
+                pushKaryawan(&listKaryawan);
                 break;
+            case 2 :
+                displayList(&listKaryawan);
             case 99 :
                 return 0;
         }
