@@ -34,6 +34,18 @@ void pushKaryawan(linkedList *listKaryawan){
     unsigned int id;
     printf("%s", "ID: ");
     scanf("%d", &id);
+    if(!isIdValid(id)){
+        printf("%s\n", "invalid ID");
+        return;
+    }
+    newNode->id=id;
+
+    char name[30];
+    printf("%s", "Nama: ");
+    scanf("%s", name);
+    getc();
+    
+
     
 
     if(listKaryawan->head==NULL){
