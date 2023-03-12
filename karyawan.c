@@ -44,18 +44,24 @@ void pushKaryawan(linkedList *listKaryawan){
 
     char name[30];
     printf("%s", "Nama: ");
-    scanf("%s", name);
-    getchar();
+    fgets(name, 30, stdin);
+    if ((strlen(name) > 0) && (name[strlen (name) - 1] == '\n')){
+        name[strlen (name) - 1] = '\0';
+    }
 
     char birthplace[30];
     printf("%s", "Birthplace: ");
-    scanf("%s", birthplace);
-    getchar();
+    fgets(birthplace, 30, stdin);
+    if ((strlen(birthplace) > 0) && (birthplace[strlen (birthplace) - 1] == '\n')){
+        birthplace[strlen (birthplace) - 1] = '\0';
+    }
     
     char position[50];
     printf("%s", "Jabatan: ");
-    scanf("%s", position);
-    getchar();
+    fgets(position, 50, stdin);
+    if ((strlen(position) > 0) && (position[strlen (position) - 1] == '\n')){
+        position[strlen (position) - 1] = '\0';
+    }
 
     newNode->id = id;
     strcpy(newNode->name, name);
