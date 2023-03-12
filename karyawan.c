@@ -11,6 +11,7 @@ typedef struct Node {
     unsigned int id;
     char name[30];
     char birthplace[30];
+    char birthday[30];
     char position[50];
     struct Node *next;
 
@@ -55,6 +56,13 @@ void pushKaryawan(linkedList *listKaryawan){
     if ((strlen(birthplace) > 0) && (birthplace[strlen (birthplace) - 1] == '\n')){
         birthplace[strlen (birthplace) - 1] = '\0';
     }
+
+    char birthday[30];
+    printf("%s", "Birthday: ");
+    fgets(birthday, 30, stdin);
+    if ((strlen(birthday) > 0) && (birthday[strlen (birthday) - 1] == '\n')){
+        birthday[strlen (birthday) - 1] = '\0';
+    }
     
     char position[50];
     printf("%s", "Jabatan: ");
@@ -66,6 +74,7 @@ void pushKaryawan(linkedList *listKaryawan){
     newNode->id = id;
     strcpy(newNode->name, name);
     strcpy(newNode->birthplace, birthplace);
+    strcpy(newNode->birthday, birthday);
     strcpy(newNode->position, position);
 
     
