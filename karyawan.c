@@ -43,7 +43,12 @@ void pushKaryawan(linkedList *listKaryawan){
     char name[30];
     printf("%s", "Nama: ");
     scanf("%s", name);
-    getc();
+    getchar();
+
+    char birthplace[30];
+    printf("%s", "Birthplace: ");
+    scanf("%s", birthplace);
+    getchar();
     
 
     
