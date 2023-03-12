@@ -20,6 +20,18 @@ typedef struct list{
     node *head;
 }linkedList;
 
+void pushKaryawan(linkedList *listKaryawan){
+    node *newNode = (node *) malloc(sizeof(node));
+    if(newNode == NULL){
+        printf("%s\n", "memory allocation error");
+        return;
+    }
+    scanf("%s")
+    if(listKaryawan->head==NULL){
+        listKaryawan->head = newNode;
+    }
+}
+
 int main(){
     int menu;
     while (1){
