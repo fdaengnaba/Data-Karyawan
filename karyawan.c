@@ -69,12 +69,31 @@ void pushKaryawan(linkedList *listKaryawan){
     strcpy(newNode->position, position);
 
     
-
+    node *curr = listKaryawan->head;
+    node *prev = NULL;
     if(listKaryawan->head==NULL){
         listKaryawan->head = newNode;
     } else {
-        newNode->next = listKaryawan->head;
-        listKaryawan->head = newNode;
+        while( curr->next != NULL && curr->id < id){
+            prev = curr;
+            curr = curr->next;
+        }
+        if (curr->id == id){
+            printf("%s\n", "ID telah digunakan");
+            return;
+        } else if( prev == NULL ){
+            if ( curr->id > id ){
+                newNode->next = curr;
+                listKaryawan->head = newNode;
+            } else {
+                curr->next = newNode;
+            }
+        } else if (curr->next == NULL){
+            curr->next = newNode;
+        } else {
+            newNode->next = curr->next;
+            curr->next = newNode;
+        }
     }
 }
 
@@ -97,19 +116,22 @@ void displayList(linkedList *listKaryawan){
 int main(){
     int menu;
     linkedList listKaryawan;
+    system("clear");
     while (1){
-        system("clear");
-        printf("%s\n", "1. Push Data");
-        printf("%s\n", "1. Display daftar karyawan");
+        printf("\n\n%s\n", "1. Push Data");
+        printf("%s\n", "2. Display daftar karyawan");
 
         scanf("%d", &menu);
 
         switch(menu){
             case 1 :
+                system("clear");
                 pushKaryawan(&listKaryawan);
                 break;
             case 2 :
+                system("clear");
                 displayList(&listKaryawan);
+                break;
             case 99 :
                 return 0;
         }
