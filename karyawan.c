@@ -70,31 +70,27 @@ void pushKaryawan(linkedList *listKaryawan){
 
     
     node *curr = listKaryawan->head;
-    node *prev = NULL;
     if(listKaryawan->head==NULL){
         listKaryawan->head = newNode;
-    } else {
-        while( curr->next != NULL && curr->id < id){
-            prev = curr;
-            curr = curr->next;
-        }
-        if (curr->id == id){
-            printf("%s\n", "ID telah digunakan");
-            return;
-        } else if( prev == NULL ){
-            if ( curr->id > id ){
-                newNode->next = curr;
-                listKaryawan->head = newNode;
+    } else { 
+        if ( curr->id > id ){
+            newNode->next = curr;
+            listKaryawan->head = newNode;
+        } else {
+            while (curr->next != NULL && curr->next->id < id){
+                curr = curr->next;
+            }
+            if (curr->id == id){
+                printf("%s\n", "ID sudah digunakan");
+            } else if (curr->next == NULL){
+                curr->next = newNode;
             } else {
+                newNode->next = curr->next;
                 curr->next = newNode;
             }
-        } else if (curr->next == NULL){
-            curr->next = newNode;
-        } else {
-            newNode->next = curr->next;
-            curr->next = newNode;
         }
     }
+    printf("\n%s", "berhasil ditambahkan\n\n");
 }
 
 void displayList(linkedList *listKaryawan){
@@ -106,7 +102,7 @@ void displayList(linkedList *listKaryawan){
             printf("ID : %5.d\n", curr->id);
             printf("Nama lengkap : %s\n", curr->name);
             printf("Tempat lahir : %s\n", curr->birthplace);
-            printf("Jabatan : %s\n", curr->position);
+            printf("Jabatan : %s\n\n", curr->position);
             curr = curr->next;
         }
     }
@@ -118,8 +114,9 @@ int main(){
     linkedList listKaryawan;
     system("clear");
     while (1){
-        printf("\n\n%s\n", "1. Push Data");
+        printf("%s\n", "1. Push Data");
         printf("%s\n", "2. Display daftar karyawan");
+        printf("%s\n", "-1. quit\n");
 
         scanf("%d", &menu);
 
@@ -132,8 +129,10 @@ int main(){
                 system("clear");
                 displayList(&listKaryawan);
                 break;
-            case 99 :
+            case -1 :
                 return 0;
+            default :
+                printf("%s\n", "menu invalid");
         }
     }
 }
