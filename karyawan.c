@@ -19,6 +19,11 @@ typedef struct Node {
 typedef struct list{
     node *head;
 }linkedList;
+int isIdValid(unsigned int id){
+    if (id <= 99999){
+        return 1;
+    } else return 0;
+}
 
 void pushKaryawan(linkedList *listKaryawan){
     node *newNode = (node *) malloc(sizeof(node));
@@ -35,6 +40,8 @@ void pushKaryawan(linkedList *listKaryawan){
         listKaryawan->head = newNode;
     }
 }
+    
+
 
 int main(){
     int menu;
