@@ -50,6 +50,10 @@ void pushKaryawan(linkedList *listKaryawan){
     scanf("%s", birthplace);
     getchar();
     
+    char position[50];
+    printf("%s", "Jabatan: ");
+    scanf("%s", position);
+    getchar();
 
     
 
