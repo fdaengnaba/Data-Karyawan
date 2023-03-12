@@ -19,6 +19,57 @@ typedef struct Node {
 typedef struct list{
     node *head;
 }linkedList;
+int isIdValid(unsigned int id){
+    if (id <= 99999){
+        return 1;
+    } else return 0;
+}
+
+void pushKaryawan(linkedList *listKaryawan){
+    node *newNode = (node *) malloc(sizeof(node));
+    if(newNode == NULL){
+        printf("%s\n", "memory allocation error");
+        return;
+    }
+    unsigned int id;
+    printf("%s", "ID: ");
+    scanf("%d", &id);
+    if(!isIdValid(id)){
+        printf("%s\n", "invalid ID");
+        return;
+    }
+
+    char name[30];
+    printf("%s", "Nama: ");
+    scanf("%s", name);
+    getchar();
+
+    char birthplace[30];
+    printf("%s", "Birthplace: ");
+    scanf("%s", birthplace);
+    getchar();
+    
+    char position[50];
+    printf("%s", "Jabatan: ");
+    scanf("%s", position);
+    getchar();
+
+    newNode->id = id;
+    strcpy(newNode->name, name);
+    strcpy(newNode->birthplace, birthplace);
+    strcpy(newNode->position, position);
+
+    
+
+    if(listKaryawan->head==NULL){
+        listKaryawan->head = newNode;
+    } else {
+        newNode->next = listKaryawan->head;
+        listKaryawan->head = newNode;
+    }
+}
+    
+
 
 int main(){
     int menu;
