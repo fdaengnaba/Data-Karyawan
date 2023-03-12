@@ -26,7 +26,11 @@ void pushKaryawan(linkedList *listKaryawan){
         printf("%s\n", "memory allocation error");
         return;
     }
-    scanf("%s")
+    unsigned int id;
+    printf("%s", "ID: ");
+    scanf("%d", &id);
+    
+
     if(listKaryawan->head==NULL){
         listKaryawan->head = newNode;
     }
