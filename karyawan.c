@@ -38,7 +38,6 @@ void pushKaryawan(linkedList *listKaryawan){
         printf("%s\n", "invalid ID");
         return;
     }
-    newNode->id=id;
 
     char name[30];
     printf("%s", "Nama: ");
@@ -55,9 +54,17 @@ void pushKaryawan(linkedList *listKaryawan){
     scanf("%s", position);
     getchar();
 
+    newNode->id = id;
+    strcpy(newNode->name, name);
+    strcpy(newNode->birthplace, birthplace);
+    strcpy(newNode->position, position);
+
     
 
     if(listKaryawan->head==NULL){
+        listKaryawan->head = newNode;
+    } else {
+        newNode->next = listKaryawan->head;
         listKaryawan->head = newNode;
     }
 }
