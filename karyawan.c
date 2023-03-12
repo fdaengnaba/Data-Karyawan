@@ -19,3 +19,20 @@ typedef struct Node {
 typedef struct list{
     node *head;
 }linkedList;
+
+int main(){
+    int menu;
+    while (1){
+        system("clear");
+        printf("%s\n", "1. Push Data");
+        scanf("%d", &menu);
+
+        switch(menu){
+            case 1 :
+                printf("menu 1\n");
+                break;
+            case 99 :
+                return 0;
+        }
+    }
+}
