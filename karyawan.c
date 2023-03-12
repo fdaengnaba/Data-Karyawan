@@ -13,6 +13,7 @@ typedef struct Node {
     char birthplace[30];
     char position[50];
     struct Node *next;
+
 } node;
 
 typedef struct list{
