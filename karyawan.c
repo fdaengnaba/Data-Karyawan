@@ -20,6 +20,12 @@ typedef struct list{
     node *head;
 }linkedList;
 
+int isIdValid(unsigned int id){
+    if (id <= 99999){
+        return 1;
+    } else return 0;
+}
+
 int main(){
     int menu;
     while (1){
