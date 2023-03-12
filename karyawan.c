@@ -14,3 +14,7 @@ typedef struct Node {
     char position[50];
     struct Node *next;
 } node;
+
+typedef struct list{
+    node *head;
+}linkedList;
