@@ -152,6 +152,13 @@ void hapusKaryawan(linkedList *listKaryawan, int id){
     }
 }
 
+void freeList(node *curr){
+    if (curr->next != NULL){
+        freeList(curr->next);
+    }
+    free(curr);
+}
+
 
 int main(){
     int menu;
@@ -161,6 +168,7 @@ int main(){
         printf("%s\n", " 1 - Push Data");
         printf("%s\n", " 2 - Display daftar karyawan");
         printf("%s\n", " 3 - Hapus karyawan berdasarkan ID");
+        printf("%s\n", " 4 - Hapus Seluruh Data Karyawan");
         printf("%s\n", "-1 - quit\n");
 
         scanf("%d", &menu);
@@ -179,6 +187,11 @@ int main(){
                 printf("ID karyawan yang akan dihapus: ");
                 scanf("%d", &id);
                 hapusKaryawan(&listKaryawan, id);
+                break;
+            case 4 :
+                freeList(listKaryawan.head);
+                listKaryawan.head = NULL;
+                printf("Seluruh data karyawan telah di hapus\n");
                 break;
             case -1 :
                 return 0;
