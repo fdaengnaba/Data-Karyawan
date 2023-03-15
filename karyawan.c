@@ -117,6 +117,41 @@ void displayList(linkedList *listKaryawan){
     }
 }
 
+void hapusKaryawan(linkedList *listKaryawan, int id){
+    node *curr = listKaryawan->head;
+    node *prev = NULL;
+
+    if (listKaryawan->head == NULL){
+        printf("Tidak ada data karyawan\n");
+    } 
+
+    do {
+        if(curr->id == id){
+            /* kalo ada di depan */
+            if (prev == NULL){
+                listKaryawan->head = curr->next;
+                free(curr);
+                printf("Data karyawan dengna ID %d telah dihapus\n", id);
+                return;
+            } else {
+                prev->next = curr->next;
+                free(curr);
+                printf("Data karyawan dengna ID %d telah dihapus\n", id);
+                return;
+            }
+        }
+        prev = curr;
+        curr = curr->next;
+    } while(curr->next != NULL);
+    if (curr->id == id){
+        prev->next = curr->next;
+        free(curr);
+        printf("Data karyawan dengna ID %d telah dihapus\n", id);
+    } else {
+        printf("Data karyawan dengan ID %d tidak ditemukan\n", id);
+    }
+}
+
 
 int main(){
     int menu;
@@ -142,7 +177,7 @@ int main(){
             case 3 :
                 int id;
                 printf("ID karyawan yang akan dihapus: ");
-                scanf("%d", id);
+                scanf("%d", &id);
                 hapusKaryawan(&listKaryawan, id);
                 break;
             case -1 :
