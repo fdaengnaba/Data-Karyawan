@@ -123,9 +123,10 @@ int main(){
     linkedList listKaryawan;
     system("clear");
     while (1){
-        printf("%s\n", "1. Push Data");
-        printf("%s\n", "2. Display daftar karyawan");
-        printf("%s\n", "-1. quit\n");
+        printf("%s\n", " 1 - Push Data");
+        printf("%s\n", " 2 - Display daftar karyawan");
+        printf("%s\n", " 3 - Hapus karyawan berdasarkan ID");
+        printf("%s\n", "-1 - quit\n");
 
         scanf("%d", &menu);
 
@@ -137,6 +138,12 @@ int main(){
             case 2 :
                 system("clear");
                 displayList(&listKaryawan);
+                break;
+            case 3 :
+                int id;
+                printf("ID karyawan yang akan dihapus: ");
+                scanf("%d", id);
+                hapusKaryawan(&listKaryawan, id);
                 break;
             case -1 :
                 return 0;
