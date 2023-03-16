@@ -43,32 +43,48 @@ void pushKaryawan(linkedList *listKaryawan){
         return;
     }
 
-    char name[30];
+    char name[32];
     printf("%s", "Nama: ");
-    fgets(name, 30, stdin);
+    fgets(name, 32, stdin);
     if ((strlen(name) > 0) && (name[strlen (name) - 1] == '\n')){
         name[strlen (name) - 1] = '\0';
     }
+    if (strlen(name) > 30){
+        printf("%s\n", "Nama terlalu panjang\n");
+        return;
+    }
 
-    char birthplace[30];
+    char birthplace[32];
     printf("%s", "Birthplace: ");
-    fgets(birthplace, 30, stdin);
+    fgets(birthplace, 32, stdin);
     if ((strlen(birthplace) > 0) && (birthplace[strlen (birthplace) - 1] == '\n')){
         birthplace[strlen (birthplace) - 1] = '\0';
     }
+    if (strlen(birthplace) > 32){
+        printf("%s\n", "birthplace terlalu panjang\n");
+        return;
+    }
 
-    char birthday[30];
+    char birthday[32];
     printf("%s", "Birthday: ");
-    fgets(birthday, 30, stdin);
+    fgets(birthday, 32, stdin);
     if ((strlen(birthday) > 0) && (birthday[strlen (birthday) - 1] == '\n')){
         birthday[strlen (birthday) - 1] = '\0';
     }
+    if (strlen(birthday) > 30){
+        printf("%s\n", "Birthday terlalu panjang\n");
+        return;
+    }
     
-    char position[50];
+    char position[52];
     printf("%s", "Jabatan: ");
-    fgets(position, 50, stdin);
+    fgets(position, 52, stdin);
     if ((strlen(position) > 0) && (position[strlen (position) - 1] == '\n')){
         position[strlen (position) - 1] = '\0';
+    }
+    if (strlen(position) > 50){
+        printf("%s\n", "Jabatan terlalu panjang\n");
+        return;
     }
 
     newNode->id = id;
