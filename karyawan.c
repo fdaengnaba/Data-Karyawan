@@ -127,6 +127,7 @@ void displayList(linkedList *listKaryawan){
             printf("ID : %5.d\n", curr->id);
             printf("Nama lengkap : %s\n", curr->name);
             printf("Tempat lahir : %s\n", curr->birthplace);
+            printf("Tanggal lahir: %s\n", curr->birthday);
             printf("Jabatan : %s\n\n", curr->position);
             curr = curr->next;
         }
